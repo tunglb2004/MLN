@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tiền Việt Nam thời kỳ 1945–1954</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'EB Garamond', serif;
+            background-color: #f8f1dc;
+            color: #2b1d0e;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .main-title {
+            width: 100%;
+            text-align: center;
+            font-size: 52px;
+            font-weight: 600;
+            color: #3e2b16;
+            padding: 25px 0 15px;
+            border-bottom: 4px double #7a5a35;
+            background-color: rgba(248, 241, 220, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            backdrop-filter: blur(2px);
+        }
+
+        .slide {
+            padding-top: 150px;
+            /* tránh bị che bởi title cố định */
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.8s ease;
+            width: 200%;
+            height: 100vh;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 60px 80px;
+            background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+            background-repeat: repeat;
+            overflow-y: auto;
+        }
+
+        .text-content {
+            flex: 1;
+            padding-right: 50px;
+            max-width: 55%;
+        }
+
+        .image-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 600;
+            border-bottom: 3px solid #6b4c2a;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 25px;
+            color: #553c1d;
+        }
+
+        p,
+        li {
+            font-size: 20px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        ul {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            /* khoảng cách lớn hơn để không bị dính */
+            justify-items: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .image-grid img {
+            width: 100%;
+            max-width: 330px;
+            /* tăng từ 230px lên 330px */
+            border: 2px solid #b49767;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(60, 40, 20, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(60, 40, 20, 0.5);
+        }
+
+
+
+        .note {
+            font-style: italic;
+            font-size: 16px;
+            color: #6a5a3e;
+            margin-top: 10px;
+        }
+
+        .nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #5e4523;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            line-height: 62px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            color: #4a3620;
+            z-index: 10;
+            opacity: 0.35;
+            /* 🔹 Làm mờ mặc định */
+            transition: opacity 0.4s ease, background 0.4s ease, transform 0.3s ease;
+        }
+
+        .nav:hover {
+            opacity: 1;
+            /* 🔹 Khi hover sẽ sáng rõ */
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.1);
+            /* Nhấn mạnh nhẹ khi rê chuột */
+        }
+
+        #prev {
+            left: 25px;
+        }
+
+        #next {
+            right: 25px;
+        }
+
+        .nav.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media (max-width: 1000px) {
+            .slide {
+                flex-direction: column;
+                padding: 40px;
+                overflow-y: auto;
+            }
+
+            .text-content,
+            .image-content {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .image-grid img {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-title">
+        Sau Cách mạng tháng Tám (1945–1975)
+    </header>
+
+    <div class="slider" id="slider">
+        <!-- Slide 1 -->
+        <section class="slide" id="slide1">
+            <div class="text-content">
+                <h1>Giai đoạn 1945–1951</h1>
+                <p><strong>Giấy bạc Việt Nam Dân chủ Cộng hòa – “Giấy bạc Cụ Hồ”</strong></p>
+                <p><strong>Ngày phát hành đầu tiên:</strong> 31/1/1946.<br>
+                    <strong>Cơ quan phát hành:</strong> Bộ Tài chính Việt Nam Dân chủ Cộng hòa.<br>
+                    <strong>Tên gọi thường dùng:</strong> Giấy bạc Cụ Hồ (in chân dung Chủ tịch Hồ Chí Minh).<br>
+                    <strong>Chất liệu:</strong> Giấy, in thủ công tại chiến khu Việt Bắc.<br>
+                    <strong>Mệnh giá:</strong> 1đ, 5đ, 10đ, 20đ, 50đ, 100đ.
+                </p>
+
+                <p><strong>Đặc điểm thiết kế:</strong></p>
+                <ul>
+                    <li>Mặt trước: Chân dung Hồ Chí Minh, dòng chữ “Việt Nam Dân chủ Cộng hòa”.</li>
+                    <li>Mặt sau: Hoa văn dân tộc, số sê-ri, chữ ký Bộ trưởng Tài chính.</li>
+                    <li>Có ký hiệu “A”, “B”, “C”… để phân biệt từng đợt in.</li>
+                </ul>
+
+                <p><strong>Mục đích:</strong></p>
+                <ul>
+                    <li>Thay thế tiền Đông Dương của Pháp.</li>
+                    <li>Gây quỹ cho chính quyền kháng chiến.</li>
+                    <li>Tạo niềm tin vào nền tài chính độc lập.</li>
+                </ul>
+
+                <h2>Bối cảnh và ý nghĩa</h2>
+                <p>
+                    Sau Cách mạng tháng Tám, chính quyền non trẻ phải gây dựng nền tài chính độc lập.
+                    “Giấy bạc Cụ Hồ” ra đời trong hoàn cảnh kháng chiến gian khổ, trở thành biểu tượng
+                    của lòng tin vào Chính phủ và Bác Hồ. Dù mộc mạc, tờ tiền thể hiện ý chí tự cường
+                    và tinh thần độc lập dân tộc.
+                </p>
+            </div>
+
+            <div class="image-content">
+                <div class="image-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <img src="image/1945-1951 (1).jpg" alt="Tiền 1945–1951">
+                    <img src="image/1945-1951 (2).jpg" alt="Tiền 1945–1951">
+                </div>
+                <p class="note">Tiền Việt Nam Dân chủ Cộng hòa (1945–1951)</p>
+            </div>
+        </section>
+
+        <!-- Slide 2 -->
+        <section class="slide" id="slide2">
+            <div class="text-content">
+                <h1>Giai đoạn 1951–1954</h1>
+                <p><strong>Bối cảnh:</strong></p>
+                <ul>
+                    <li>Cuộc kháng chiến chống Pháp phát triển mạnh.</li>
+                    <li>Ngày 6/5/1951, Chủ tịch Hồ Chí Minh ký sắc lệnh thành lập <strong>Ngân hàng Quốc gia Việt
+                            Nam</strong>.</li>
+                </ul>
+
+                <p><strong>Đặc điểm của tiền Ngân hàng Quốc gia Việt Nam:</strong></p>
+                <ul>
+                    <li>Cơ quan phát hành: Ngân hàng Quốc gia Việt Nam.</li>
+                    <li>Đơn vị tiền tệ: Đồng Việt Nam.</li>
+                    <li>Chất liệu: Giấy in kỹ hơn, màu sắc đa dạng.</li>
+                    <li>Mệnh giá: 1đ, 5đ, 10đ, 20đ, 50đ, 100đ, 200đ, 500đ.</li>
+                    <li>Hình ảnh: Hồ Chí Minh, Quốc huy, công nhân – nông dân – bộ đội, cảnh sản xuất.</li>
+                </ul>
+
+                <h2>Ý nghĩa lịch sử</h2>
+                <p>
+                    Việc thành lập Ngân hàng Quốc gia là bước ngoặt trong việc xây dựng chủ quyền tài chính độc lập.
+                    Tiền trở thành biểu tượng cho sức mạnh nhân dân và tinh thần kháng chiến.
+                    Những tờ bạc in trong gian khổ nhưng vẫn thể hiện tinh thần tự cường của dân tộc Việt Nam.
+                </p>
+            </div>
+
+            <div class="image-content">
+                <div class="image-grid">
+                    <img src="image/1951-1954 (1).jpg" alt="Tiền 1951–1954">
+                    <img src="image/1951-1954(2).jpg" alt="Tiền 1951–1954">
+                    <img src="image/1951-1954 (3).jpg" alt="Tiền 1951–1954">
+                    <img src="image/1951-1954 (4).jpg" alt="Tiền 1951–1954">
+                    <img src="image/1951-1954 (5).jpg" alt="Tiền 1951–1954">
+                    <img src="image/1951-1954 (6).jpg" alt="Tiền 1951–1954">
+                </div>
+                <p class="note">Tiền Ngân hàng Quốc gia Việt Nam (1951–1954)</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="prev" class="nav">&#8592;</div>
+    <div id="next" class="nav">&#8594;</div>
+
+    <script>
+        let index = 0;
+        const slider = document.getElementById('slider');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+
+        function updateSlide() {
+            slider.style.transform = `translateX(-${index * 100}vw)`;
+            prevBtn.classList.toggle('hidden', index === 0);
+            nextBtn.classList.toggle('hidden', index === 1);
+        }
+
+        nextBtn.onclick = () => {
+            if (index < 1) index++;
+            updateSlide();
+        };
+
+        prevBtn.onclick = () => {
+            if (index > 0) index--;
+            updateSlide();
+        };
+
+        updateSlide();
+    </script>
+</body>
+
+</html>
